@@ -8,8 +8,10 @@ socket.on('connect', function () {
 socket.on('message', function (message) {
 	console.log('New message:');
 	console.log(message.text);
-
-	jQuery('.messages').append('<p>' + message.text + '</p>');
+//	console.log(message.time);
+	var timestampMoment = moment.utc(message.timestamp)
+	
+	jQuery('.messages').append('<p>' + timestampMoment.local().format('h:mma') + ': ' + message.text + '</p>');
 });
 
 
