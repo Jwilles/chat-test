@@ -73,7 +73,7 @@ io.on('connection', function (socket) {
 			io.to(clientInfo[socket.id].room).emit('message', message);
 		}
 
-			});
+	});
 	
 	socket.emit('message', {
 		name: 'System',
