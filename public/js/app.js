@@ -18,8 +18,9 @@ socket.on('connect', function () {
 
 
 socket.on('message', function (message) {
-	var $message = jQuery('.messages');
+	var $messages = jQuery('.messages');
 	var timestampMoment = moment.utc(message.timestamp)
+	var $message = jQuery('<li class="list-group-item"></li>');
 	
 	console.log('New message:');
 	console.log(message.text);
@@ -27,6 +28,7 @@ socket.on('message', function (message) {
 	
 	$message.append('<p><strong>' + message.name + ' ' + timestampMoment.local().format('h:mma') + '</strong></p>');
 	$message.append('<p>' + message.text + '</p>');
+	$messages.append($message);
 });
 
 
